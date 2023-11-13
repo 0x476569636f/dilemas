@@ -14,9 +14,8 @@ Please see the `installation section <https://codeigniter.com/userguide3/install
 of the CodeIgniter User Guide.
 
 
-************
+
 Tampilan Siswa
-************
 
 ************
 Login Siswa
@@ -30,3 +29,52 @@ Home Siswa
 Data Siswa
 ************
 ![My Image](./img/data%20siswa.png)
+************
+Pengumuman
+************
+![My Image](./img/pengumuman.png)
+
+Tampilan Guru
+
+************
+Login Guru
+************
+![My Image](./img/login%20guru.png)
+************
+Home Guru
+************
+![My Image](./img/home%20guru.png)
+************
+Data Guru
+************
+![My Image](./img/data%20guru.png)
+************
+Pengumuman
+************
+![My Image](./img/pengumuman.png)
+
+
+Tampilan Admin
+
+
+************
+Login Admin
+************
+![My Image](./img/login%20admin.png)
+************
+Home Admin
+************
+![My Image](./img/home%20admin.png)
+************
+Crud Data Siswa
+************
+![My Image](./img/crud%20data%20siswa.png)
+************
+Crud Data Guru
+************
+![My Image](./img/crud%20data%20guru.png)
+************
+Crud Pengumuman
+************
+![My Image](./img/add%20pengumuman.png)
+
