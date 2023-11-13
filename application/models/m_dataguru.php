@@ -5,13 +5,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_dataguru extends CI_Model
 {
-    public function getSiswaByLoggedID()
+    public function getGuruByLoggedID()
     {
         $loggedID = $this->session->userdata('id_guru');
-
+    
+        $this->db->select('tbl_guru.*, tbl_mapel.nama_mapel');
         $this->db->where('id_guru', $loggedID);
+        $this->db->join('tbl_mapel', 'tbl_mapel.id_mapel = tbl_guru.id_mapel', 'left');
         $query = $this->db->get('tbl_guru');
-
+    
         if ($query->num_rows() > 0) {
             return $query->row();
         } else {
@@ -51,7 +53,7 @@ class M_dataguru extends CI_Model
     public function delete($data)
     {
         $this->db->where('id_guru', $data['id_guru']);
-        $this->db->delete('tbl_guru`', $data);
+        $this->db->delete('tbl_siswa`', $data);
     }
 }
 
