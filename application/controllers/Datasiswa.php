@@ -9,6 +9,7 @@ class Datasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_datasiswa');
+        $this->load->model('m_kelas');
     }
     public function index()
     {

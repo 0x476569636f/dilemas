@@ -18,6 +18,11 @@
             </div>
 
             <div class="form-group">
+                <label for="kelas">Kelas</label>
+                <input type="text" class="form-control" id="kelas" placeholder="<?= $datasiswa->kelas; ?>" disabled>
+            </div>
+
+            <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir</label>
                 <input type="text" class="form-control" id="tempat_lahir" placeholder="<?= $datasiswa->tempat_lahir; ?>" disabled>
             </div>
