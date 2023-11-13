@@ -27,8 +27,10 @@
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-    
-    
+    <div class="sidebar-heading">
+            Data Siswa Dan Guru
+        </div>
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?php if (
                             $this->uri->segment(1) == 'crudsiswa' || $this->uri->segment(1) == 'crudguru'
@@ -59,6 +61,21 @@
                                         } ?>" href="<?= base_url('crudguru'); ?>">Data Guru</a>
             </div>
         </div>
+        
+    <hr class="sidebar-divider d-none d-md-block">
+
+        <div class="sidebar-heading">
+            PENGUMUMAN
+        </div>
+
+    <li class="nav-item <?php if (
+                            $this->uri->segment(1) ==  'addpengumuman'
+                        ) {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link" href="<?= base_url('addpengumuman') ?>">
+            <i class="fas fa-bullhorn"></i>
+            <span>PENGUMUMAN</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->
