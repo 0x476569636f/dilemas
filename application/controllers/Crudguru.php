@@ -3,21 +3,21 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Crudsiswa extends CI_Controller
+class Crudguru extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('m_datasiswa');
-        $this->load->model('m_kelas');
+        $this->load->model('m_mapel');
+        $this->load->model('m_dataguru');
     }
 
     public function index()
     {
         $data = array(
-            'title' => 'Siswa',
-            'datasiswa' => $this->m_datasiswa->get_all_data(),
-            'content' => 'admin/crudsiswa/v_datasiswa',
+            'title' => 'Guru',
+            'dataguru' => $this->m_dataguru->get_all_data(),
+            'content' => 'admin/crudguru/v_dataguru',
         );
 
         $this->load->view('admin/layout/wrapper', $data, false);
@@ -26,31 +26,17 @@ class Crudsiswa extends CI_Controller
     public function add()
     {
         $this->form_validation->set_rules(
-            'nis_siswa',
-            'NIS',
+            'nip_guru',
+            'NIP',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
-            'nisn_siswa',
-            'NISN',
+            'nama_guru',
+            'Nama Guru',
             'required',
             array('required' => '%s Harus Di Isi')
-        );
-
-        $this->form_validation->set_rules(
-            'nama_siswa',
-            'Nama Siswa',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
-            'id_kelas',
-            'Kelas',
-            'required',
-            array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
@@ -75,20 +61,6 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'agama',
-            'Agama',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
-            'anak_ke',
-            'Anak Ke',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
             'alamat',
             'Alamat Rumah',
             'required',
@@ -96,7 +68,7 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'no_telp',
+            'no_hp',
             'Nomor Telepon',
             'required',
             array('required' => '%s Harus Di Isi !')
@@ -110,26 +82,19 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'asal_sekolah',
-            'Asal Sekolah',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-
-        $this->form_validation->set_rules(
-            'no_ijazah',
-            'Nomor Ijazah',
+            'usia',
+            'Usia',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
-            'thn_masuk',
-            'Tahun Masuk',
+            'id_mapel',
+            'Mapel',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
+
 
         $this->form_validation->set_rules(
             'password',
@@ -140,65 +105,46 @@ class Crudsiswa extends CI_Controller
 
         if ($this->form_validation->run() == True) {
                 $data = array(
-                    'nis_siswa' => $this->input->post('nis_siswa'),
-                    'nisn_siswa' => $this->input->post('nisn_siswa'),
-                    'nama_siswa' => strtoupper($this->input->post('nama_siswa')),
-                    'id_kelas' => $this->input->post('id_kelas'),
+                    'nip_guru' => $this->input->post('nip_guru'),
+                    'nama_guru' => strtoupper($this->input->post('nama_guru')),
                     'tempat_lahir' => $this->input->post('tempat_lahir'),
                     'tgl_lahir' => $this->input->post('tgl_lahir'),
                     'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-                    'agama' => $this->input->post('agama'),
-                    'anak_ke' => $this->input->post('anak_ke'),
                     'alamat' => $this->input->post('alamat'),
-                    'no_telp' => $this->input->post('no_telp'),
+                    'no_hp' => $this->input->post('no_hp'),
                     'email' => $this->input->post('email'),
-                    'asal_sekolah' => strtoupper($this->input->post('asal_sekolah')),
-                    'no_ijazah' => $this->input->post('no_ijazah'),
-                    'thn_masuk' => $this->input->post('thn_masuk'),
+                    'usia' => $this->input->post('usia'),
+                    'id_mapel' => $this->input->post('id_mapel'),
                     'password' => md5($this->input->post('password')),
                 );
-                $this->m_datasiswa->add($data);
+                $this->m_dataguru->add($data);
                 $this->session->set_flashdata('pesan', 'Data Berhasil DI Tambahkan !');
-                redirect('crudsiswa');
+                redirect('crudguru');
             
         }
         $data = array(
             'title' => 'Add Siswa',
-            'kelas' => $this->m_kelas->get_all_data(),
-            'content' => 'admin/crudsiswa/v_add',
+            'mapel' => $this->m_mapel->get_all_data(),
+            'content' => 'admin/crudguru/v_add',
         );
 
         $this->load->view('admin/layout/wrapper', $data, false);
     }
 
-    public function update($id_siswa = NULL)
+    public function update($id_guru = NULL)
     {
         $this->form_validation->set_rules(
-            'nis_siswa',
-            'NIS',
+            'nip_guru',
+            'NIP',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
-            'nisn_siswa',
-            'NISN',
+            'nama_guru',
+            'Nama Guru',
             'required',
             array('required' => '%s Harus Di Isi')
-        );
-
-        $this->form_validation->set_rules(
-            'nama_siswa',
-            'Nama Siswa',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
-            'id_kelas',
-            'Kelas',
-            'required',
-            array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
@@ -223,20 +169,6 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'agama',
-            'Agama',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
-            'anak_ke',
-            'Anak Ke',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-        $this->form_validation->set_rules(
             'alamat',
             'Alamat Rumah',
             'required',
@@ -244,7 +176,7 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'no_telp',
+            'no_hp',
             'Nomor Telepon',
             'required',
             array('required' => '%s Harus Di Isi !')
@@ -258,26 +190,19 @@ class Crudsiswa extends CI_Controller
         );
 
         $this->form_validation->set_rules(
-            'asal_sekolah',
-            'Asal Sekolah',
-            'required',
-            array('required' => '%s Harus Di Isi !')
-        );
-
-
-        $this->form_validation->set_rules(
-            'no_ijazah',
-            'Nomor Ijazah',
+            'usia',
+            'Usia',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
 
         $this->form_validation->set_rules(
-            'thn_masuk',
-            'Tahun Masuk',
+            'id_mapel',
+            'Mapel',
             'required',
             array('required' => '%s Harus Di Isi !')
         );
+
 
         $this->form_validation->set_rules(
             'password',
@@ -288,47 +213,42 @@ class Crudsiswa extends CI_Controller
 
         if ($this->form_validation->run() == True) {
                 $data = array(
-                    'id_siswa' => $id_siswa,
-                    'nis_siswa' => $this->input->post('nis_siswa'),
-                    'nisn_siswa' => $this->input->post('nisn_siswa'),
-                    'nama_siswa' => strtoupper($this->input->post('nama_siswa')),
-                    'id_kelas' => $this->input->post('id_kelas'),
+                    'id_guru' => $id_guru,
+                    'nip_guru' => $this->input->post('nip_guru'),
+                    'nama_guru' => strtoupper($this->input->post('nama_guru')),
                     'tempat_lahir' => $this->input->post('tempat_lahir'),
                     'tgl_lahir' => $this->input->post('tgl_lahir'),
                     'jenis_kelamin' => $this->input->post('jenis_kelamin'),
-                    'agama' => $this->input->post('agama'),
-                    'anak_ke' => $this->input->post('anak_ke'),
                     'alamat' => $this->input->post('alamat'),
-                    'no_telp' => $this->input->post('no_telp'),
+                    'no_hp' => $this->input->post('no_hp'),
                     'email' => $this->input->post('email'),
-                    'asal_sekolah' => strtoupper($this->input->post('asal_sekolah')),
-                    'no_ijazah' => $this->input->post('no_ijazah'),
-                    'thn_masuk' => $this->input->post('thn_masuk'),
+                    'usia' => $this->input->post('usia'),
+                    'id_mapel' => $this->input->post('id_mapel'),
                     'password' => md5($this->input->post('password')),
                 );
-                $this->m_datasiswa->update($data);
+                $this->m_dataguru->update($data);
                 $this->session->set_flashdata('pesan', 'Data Berhasil DI Update !');
-                redirect('crudsiswa');
+                redirect('crudguru');
             
         }
         $data = array(
-            'title' => 'Update Siswa',
-            'kelas' => $this->m_kelas->get_all_data(),
-            'datasiswa' => $this->m_datasiswa->get_data($id_siswa),
-            'content' => 'admin/crudsiswa/v_update',
+            'title' => 'Update Guru',
+            'mapel' => $this->m_mapel->get_all_data(),
+            'dataguru' => $this->m_dataguru->get_data($id_guru),
+            'content' => 'admin/crudguru/v_update',
         );
 
         $this->load->view('admin/layout/wrapper', $data, false);
     }
 
     //Delete one item
-    public function delete($id_siswa = NULL)
+    public function delete($id_guru = NULL)
     {
-        $datasiswa = $this->m_datasiswa->get_data($id_siswa);
-        $data = array('id_siswa' => $id_siswa);
-        $this->m_datasiswa->delete($data);
+        $guru = $this->m_dataguru->get_data($id_guru);
+        $data = array('id_guru' => $id_guru);
+        $this->m_dataguru->delete($data);
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !');
-        redirect('crudsiswa');
+        redirect('crudguru');
     }
 }
 

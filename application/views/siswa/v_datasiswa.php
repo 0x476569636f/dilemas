@@ -18,8 +18,8 @@
             </div>
 
             <div class="form-group">
-                <label for="kelas">Kelas</label>
-                <input type="text" class="form-control" id="kelas" placeholder="<?= $datasiswa->kelas; ?>" disabled>
+                <label for="id_kelas">Kelas</label>
+                <input type="text" class="form-control" id="id_kelas" placeholder="<?= $datasiswa->kelas; ?>" disabled>
             </div>
 
             <div class="form-group">

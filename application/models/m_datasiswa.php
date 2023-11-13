@@ -9,7 +9,7 @@ class M_datasiswa extends CI_Model {
     
         $this->db->select('tbl_siswa.*, tbl_kelas.kelas');
         $this->db->where('id_siswa', $loggedID);
-        $this->db->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_siswa.kelas', 'left');
+        $this->db->join('tbl_kelas', 'tbl_kelas.id_kelas = tbl_siswa.id_kelas', 'left');
         $query = $this->db->get('tbl_siswa');
     
         if ($query->num_rows() > 0) {

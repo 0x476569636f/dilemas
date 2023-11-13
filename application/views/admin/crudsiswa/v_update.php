@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="container-lg p-2 pb-4">
         <div class="col-md-12 border">
-            <h2 class="p-1">Tambah Siswa Baru</h2>
+            <h2 class="p-1">Update Data Siswa</h2>
             <?php
             // Notif Data Kosong
             echo validation_errors('<div class="alert alert-danger alert-dismissible">
