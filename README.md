@@ -13,4 +13,20 @@ Installation
 Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
 of the CodeIgniter User Guide.
 
+
+************
+Tampilan Siswa
+************
+
+************
+Login Siswa
+************
 ![My Image](./img/login%20siswa.png)
+************
+Home Siswa
+************
+![My Image](./img/home%20siswa.png)
+************
+Data Siswa
+************
+![My Image](./img/data%20siswa.png)
